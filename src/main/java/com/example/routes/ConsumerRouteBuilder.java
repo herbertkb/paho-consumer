@@ -7,9 +7,9 @@ public class ConsumerRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("paho-mqtt5:#property:topic"
-                +"?brokerUrl=#property:mqtt-servers"
-                +"&clientId=$property:clientId"
+        from("paho-mqtt5:{{topic}}"
+                +"?brokerUrl={{mqtt-servers}}"
+                +"&clientId={{clientId}}"
                 +"&qos=1")
             .id("paho-consumer")
             .log(INFO, "Received: ${body}");
